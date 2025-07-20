@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>猜数字</title>
+		<link rel="icon" href="game icon.png" type="image/png">
+		<style>
+			body{
+				display:flex;
+				align-items:center;
+				margin:0;
+				min-height:100vh;
+				flex-direction:column
+			}
+			.kj{
+				display:flex;
+				flex-direction:column;
+				justify-content:center;
+				align-items:center;
+				width:400px;
+				height:200px;
+				border-radius:5px;
+				background-color:#bcf0ff
+			}
+			.b{
+				width:50px;
+				height:30px;
+				border-radius:5px;
+				background-color:#fffefc;
+				box-shadow:0 2px 2px 1px sandybrown;
+				border:none;
+				margin:5px 2px
+			}
+			.b:hover{
+				background-color:#cccbca
+			}
+			.b:active{
+				transform:translateY(2px);
+				background-color:#fffefc
+			}
+			.in{
+				width:200px;
+				height:30px;
+				border-radius:5px;
+				border:none;
+				box-shadow:0 2px 2px 1px sandybrown;
+				margin:5px 2px
+			}
+			.h1{
+				font-size:45px;
+				margin:30px 5px 170px 5px
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="h1">这是一个十分好玩的猜数字游戏！</h1>
+		<div class="kj">
+			<h1 id="h1">快来猜数字，范围0~100</h1>
+			<div>
+				<input class="in" id="in" placeholder="输入你猜的数字……">
+				<button class="b" onclick="guess()">提交</button>
+			</div>
+			<button class="b" onclick="start()">重开</button>
+		</div>
+		<h1 id="h"></h1>
+		<script>
+			let input=document.getElementById("in");
+			let h1=document.getElementById("h1");
+			let h=document.getElementById("h");
+			let dn=Math.floor(Math.random()*(100-0+1))+0;
+			let caid=null;
+			let cis=0;
+			function start(){
+				dn=Math.floor(Math.random()*(100-0+1))+0;
+				caid=null;
+				cis=0;
+				h1.textContent="快来猜数字，范围0~100";
+				h.textContent="";
+			}
+			function guess(){
+				caid=Number(input.value);
+				if(caid<dn){
+					h1.textContent="小了";
+					cis+=1;
+				}
+				else if(caid>dn){
+					h1.textContent="大了";
+					cis+=1;
+				}
+				else if(caid=dn){
+					h1.textContent="答对了！";
+					cis+=1;
+					h.textContent="恭喜你，仅用"+cis+"次就猜到了答案！";
+					h.style.color="#ff0700";
+				}
+			}
+		</script>
+	</body>
+</html>
