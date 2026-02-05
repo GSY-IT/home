@@ -143,6 +143,25 @@
 				flex-direction:column;
 				transition:all 0.2s ease
 			}
+			.lyb{
+				position:fixed;
+				z-index:1;
+				width:50px;
+				height:150px;
+				background-color:#303030;
+				border-radius:5px;
+				border:2px solid #003e3b;
+				top:530px;
+				left:2px;
+				display:flex;
+				justify-content:center;
+				align-items:center;
+				flex-direction:column;
+				transition:all 0.2s ease
+			}
+			.lyb:hover{
+				background-color:#ffd966;
+			}
 			.guide{
 				position:fixed;
 				z-index:1;
@@ -155,7 +174,7 @@
 				left:2px;
 			}
 			.xf:hover{
-				background-color:#0093ca
+				background-color:#0093ca;
 			}
 			.h2{
 				color:white;
@@ -432,6 +451,36 @@
 				<button class="bt" onclick="downm()">本地下载</button>
 			</div>
 		</div>
+		<div class="mpimg">
+			<img src="fake love.png" alt="封面图">
+		</div>
+		<div class="mp3">
+			<div class="order1">
+				<h2>Fake Love</h2>
+				<h3>作者：防弹少年团</h3>
+			</div>
+			<div class="play" onclick="play2()">
+				<img src="MP3播放图.png" alt="播放" width=80 height=80 id="th1">
+			</div>
+			<div class="order1">
+				<button class="bt" onclick="downm1()">本地下载</button>
+			</div>
+		</div>
+		<div class="mpimg">
+			<img src="惊鸿.png" alt="封面图">
+		</div>
+		<div class="mp3">
+			<div class="order1">
+				<h2>惊鸿</h2>
+				<h3>作者：Jannik(中国)</h3>
+			</div>
+			<div class="play" onclick="play3()">
+				<img src="MP3播放图.png" alt="播放" width=80 height=80 id="th2">
+			</div>
+			<div class="order1">
+				<button class="bt" onclick="downm2()">本地下载</button>
+			</div>
+		</div>
 		<div class="kj">本站由郭书源制作 made in China</div>
 		<div class="xf" id="xf">
 			<h2 class="h2">机</h2>
@@ -463,6 +512,11 @@
 				<h3 class="h3">音</h3>
 				<h3 class="h3">乐</h3>
 			</button>
+		</div>
+		<div class="lyb" onclick="lybopen()">
+			<h3 class="h3">留</h3>
+			<h3 class="h3">言</h3>
+			<h3 class="h3">板</h3>
 		</div>
 		<script>
 			function sshdown(){
@@ -516,7 +570,18 @@
 			function downm(){
 				window.open("https://pan.huang1111.cn/s/75DKEHg","_blank");
 			}
+			function downm1(){
+				window.open("https://pan.huang1111.cn/s/YLD34sA","_blank");
+			}
+			function downm2(){
+				window.open("https://pan.huang1111.cn/s/Zq6xdSL","_blank");
+			}
+			function lybopen(){
+				window.open("http://chatonline.gamer.gd/1.php","_blank");
+			}
 			let th=document.getElementById("th");
+			let th1=document.getElementById("th1");
+			let th2=document.getElementById("th2");
 			let cs=0;
 			let thehistory=new Audio("The History.mp3");
 			function play1(){
@@ -531,6 +596,38 @@
 					th.alt="播放";
 					cs=0;
 					thehistory.pause();
+				}
+			}
+			let fakelove=new Audio("Fake Love.mp3");
+			let cs1=0;
+			function play2(){
+				if(cs1==0){
+					th1.src="stop.png";
+					th1.alt="暂停";
+					cs1=1;
+					fakelove.play();
+				}
+				else if(cs1==1){
+					th1.src="open.png";
+					th1.alt="播放";
+					cs1=0;
+					fakelove.pause();
+				}
+			}
+			let jh=new Audio("惊鸿.mp3");
+			let cs2=0;
+			function play3(){
+				if(cs2==0){
+					th2.src="stop.png";
+					th2.alt="暂停";
+					cs2=1;
+					jh.play();
+				}
+				else if(cs2==1){
+					th2.src="open.png";
+					th2.alt="播放";
+					cs2=0;
+					jh.pause();
 				}
 			}
 			let tc=document.getElementById("tc");
@@ -573,7 +670,6 @@
 			function pcs(){
 				musics.scrollIntoView();
 			}
-
 		</script>
 	</body>
 </html>
