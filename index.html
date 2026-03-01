@@ -548,6 +548,36 @@
 				<button class="bt" onclick="downm6()">本地下载</button>
 			</div>
 		</div>
+		<div class="mpimg">
+			<img src="time.png" alt="封面图">
+		</div>
+		<div class="mp3">
+			<div class="order1">
+				<h2>Time</h2>
+				<h3>电影《盗梦空间》主题曲</h3>
+			</div>
+			<div class="play" onclick="play8()">
+				<img src="open.png" alt="播放" width=80 height=80 id="th7">
+			</div>
+			<div class="order1">
+				<button class="bt" onclick="downm7()">本地下载</button>
+			</div>
+		</div>
+		<div class="mpimg">
+			<img src="Daylight.jpg" alt="封面图">
+		</div>
+		<div class="mp3">
+			<div class="order1">
+				<h2>Daylight</h2>
+				<h3>作者：Seredris</h3>
+			</div>
+			<div class="play" onclick="play9()">
+				<img src="open.png" alt="播放" width=80 height=80 id="th8">
+			</div>
+			<div class="order1">
+				<button class="bt" onclick="downm8()">本地下载</button>
+			</div>
+		</div>
 		<div class="kj">本站由郭书源制作 made in China</div>
 		<div class="xf" id="xf">
 			<h2 class="h2">机</h2>
@@ -657,6 +687,12 @@
 			}
 			function downm6(){
 				window.open("https://pan.huang1111.cn/s/4RK7Zhg","_blank");
+			}
+			function downm7(){
+				window.open("https://pan.huang1111.cn/s/byVNbFY","_blank");
+			}
+			function downm8(){
+				window.open("https://pan.huang1111.cn/s/dkZ1XHV","_blank");
 			}
 			function lybopen(){
 				window.open("http://chatonline.gamer.gd/1.php","_blank");
@@ -774,6 +810,38 @@
 					th6.alt="播放";
 					cs6=0;
 					day.pause();
+				}
+			}
+			let tmd=new Audio("Time.MP3");
+			let cs7=0;
+			function play8(){
+				if(cs7==0){
+					th7.src="stop.png";
+					th7.alt="暂停";
+					cs7=1;
+					tmd.play();
+				}
+				else if(cs7==1){
+					th7.src="open.png";
+					th7.alt="播放";
+					cs7=0;
+					tmd.pause();
+				}
+			}
+			let dl=new Audio("Daylight.MP3");
+			let cs8=0;
+			function play9(){
+				if(cs8==0){
+					th8.src="stop.png";
+					th8.alt="暂停";
+					cs8=1;
+					dl.play();
+				}
+				else if(cs8==1){
+					th8.src="open.png";
+					th8.alt="播放";
+					cs8=0;
+					dl.pause();
 				}
 			}
 			let tc=document.getElementById("tc");
