@@ -20,11 +20,11 @@
 				background-color:#292929;
 				box-shadow:0 2px 5px 2px white;
 				border-radius:10px;
-				width:400px;
+				width:500px;
 				height:600px;
 			}
 			.h1{
-				font-size:80px;
+				font-size:100px;
 				color:white;
 				margin:10px;
 			}
@@ -51,12 +51,12 @@
 				border-radius:10px;
 				border:none;
 				margin:20px;
-				box-shadow:0 2px 3px 2px white;
+				box-shadow:0 2px 3px 0px white;
 				transition:all 0.2s ease;
 			}
 			.button:active{
 				transform:translateY(2px);
-				box-shadow:0 1px 1px 1px white;
+				box-shadow:0 1px 1px 0px white;
 			}
 			.h41{
 				color:white;
@@ -71,6 +71,23 @@
 				background-color:white;
 				box-shadow:0 2px 3px 2px grey;
 			}
+			.div{
+				display:none;
+				flex-direction:column;
+				justify-content:center;
+				align-items:center;
+			}
+			.ask{
+				width:500px;
+				height:350px;
+				background-color:#292929;
+				border-radius:10px;
+				box-shadow:0 2px 10px 0 rgba(255,100,100,0.5);
+				display:flex;
+				justify-content:center;
+				align-items:center;
+				flex-direction:column;
+			}
 		</style>
 	</head>
 	<body>
@@ -82,15 +99,38 @@
 			<button class="button" onclick="banx()">备案</button>
 			<h4 class="h41" id="banh">你的备案号是：</h4>
 		</div>
-		
+		<div class="div" id="div">
+			<h1 class="h1" style='margin:2px'>YELLOW</h1>
+			<h4 class="h4">你喜欢的那种网站</h4>
+			<div class="ask">
+				<h1 style='color:white' id='question'>你是否已满18岁？</h1>
+				<div>
+					<button class='button' id='yess'>是</button>
+					<button class='button' id='nos'>否</button>
+				</div>
+				<input class='input' style='display:none' id='bahr'>
+				<button class='button' style='display:none' id='tjbah'>确定</button>
+			</div>
+		</div>
+		<video src='惊讶.mp4' style='display:none' id='videos'></video>
+		<h1 id='ip' style='display:none'>您的IP已被封，无法再访问该网站，同时已被相关平台举报</h1>
 		<script>
+			let win=document.documentElement;
 			let banh=document.getElementById("banh");
 			let ban=document.getElementById("ban");
 			let h4=document.getElementById("h4");
 			let video=document.getElementById("video");
 			let input1=document.getElementById("input1");
 			let input2=document.getElementById("input2");
+			let div=document.getElementById("div");
+			let yess=document.getElementById('yess');
+			let nos=document.getElementById('nos');
+			let question=document.getElementById('question');
+			let bahr=document.getElementById('bahr');
+			let tjbah=document.getElementById('tjbah');
 			let ku="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			let bahh='';
+			let videos=document.getElementById('videos');
 			function banx(){
 				let bah="";
 				let username=input1.value;
@@ -112,12 +152,35 @@
 					for(let i=0;i<5;i++){
 						sj=Math.floor(Math.random()*ku.length);
 						bah+=ku[sj];
+						bahh=bah;
 					}
 					banh.textContent="你的备案号是："+bah;
 					banh.style.display="block";
 					h4.style.color="red";
 					h4.textContent="5秒后消失";
-					setTimeout(function(){ban.style.display="none";},5000);
+					setTimeout(function(){ban.style.display="none";div.style.display="flex";},5000);
+				}
+			}
+			yess.onclick=function(){
+				question.textContent='请输入你的备案号：';
+				yess.style.display='none';
+				nos.style.display='none';
+				bahr.style.display='block';
+				tjbah.style.display='block';
+			}
+			tjbah.onclick=function(){
+				if(bahr.value==bahh){
+					alert('正确');
+					div.style.display='none';
+					win.requestFullscreen();
+					videos.style.display='block';
+					videos.requestFullscreen();
+					videos.play();
+					videos.addEventListener('ended',function(){
+						videos.style.display='none';
+					});
+				}else{
+					alert('错误');
 				}
 			}
 		</script>
